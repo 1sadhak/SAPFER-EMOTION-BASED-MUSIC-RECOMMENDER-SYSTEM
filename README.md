@@ -43,12 +43,13 @@ The project utilizes the FER 2013 dataset, a well-known dataset for emotion reco
 
 ## Model Architecture
 
-The model is a sequential neural network consisting of Conv2D, MaxPool2D, Dropout, and Dense layers:
+The model is a sequential neural network consisting of Conv2D, MaxPool2D, Dropout, Dense layers, and **Batch Normalization**:
 
 1. **Conv2D Layers:** Filter sizes range from 32 to 128, with ReLU activation.
-2. **Pooling Layers:** Pool size of (2,2).
-3. **Dropout:** Set to 0.25 to avoid overfitting; higher values resulted in poorer performance.
-4. **Dense Layer:** The final layer uses softmax activation for classifying the 7 emotions.
+2. **Batch Normalization:** Applied after convolutional layers to normalize activations and stabilize training.
+3. **Pooling Layers:** Pool size of (2,2).
+4. **Dropout:** Set to 0.25 to avoid overfitting; higher values resulted in poorer performance.
+5. **Dense Layer:** The final layer uses softmax activation for classifying the 7 emotions.
 
 The model is optimized using the Adam optimizer, with `categorical_crossentropy` as the loss function and `accuracy` as the evaluation metric.
 
@@ -57,7 +58,7 @@ The model is optimized using the Adam optimizer, with `categorical_crossentropy`
 ## Image Processing and Training
 
 - Images were normalized, resized to (48,48), and converted to grayscale in batches of 64 using the Keras `ImageDataGenerator`.
-- Training was conducted locally for 100 epochs, taking approximately 13 hours, resulting in an accuracy of around 88.43%.
+- Training was conducted locally for 75 epochs, taking approximately 13 hours, resulting in an accuracy of around 66%.
 
 ## Current Status
 
